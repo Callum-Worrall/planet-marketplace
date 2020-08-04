@@ -1,0 +1,2 @@
+class BuyersSeller < ApplicationRecord
+end
