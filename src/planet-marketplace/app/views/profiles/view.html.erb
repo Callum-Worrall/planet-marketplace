@@ -1,2 +1,9 @@
 <h1>View Profile</h1>
 
+<div class="card">
+  <%= image_tag @profile.picture if @profile.picture.attached? %>
+  <p><%= @profile.username %></p>
+  <p><%= @profile.name %></p>
+  <p><%= @profile.bio %></p>
+  <%= link_to "EDIT", edit_profile_path(@profile.id) %>
+</div>
