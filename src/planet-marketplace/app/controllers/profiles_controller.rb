@@ -1,12 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_profile, only: [:view, :edit]
 
   def view
-
   end
 
   def edit
-
   end
 
   def new
@@ -15,11 +14,10 @@ class ProfilesController < ApplicationController
     @profile.user_id = @user.id
   end
 
-  def create
-  
+  def create  
     @profile = Profile.new(profile_params)
 
-    @users = User.all
+    # @users = User.all
     @profile.update_attribute(:user_id, current_user.id)
 
     respond_to do |format|
@@ -34,7 +32,11 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:name, :username, :bio)
+    params.require(:profile).permit(:name, :username, :bio, :picture)
+  end
+
+  def set_profile
+    @profile = Profile.find_by user_id: current_user.id
   end
 
 end
