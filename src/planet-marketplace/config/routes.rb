@@ -10,13 +10,18 @@ Rails.application.routes.draw do
     password: 'secret', confirmation: 'verification',
     registration: 'register', edit: 'edit/profile'
   }, controllers: { registrations: "registrations" }
+  
+  # Delete User #
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  # match 'users/:id' => 'users#show', as: :user
+  resources :users
 
   # New Profile #
   get    '/profile/new' , to: 'profiles#new', as: "new_profile"
   post   '/profiles'    , to: 'profiles#create', as: "create_profile"
 
   # View Profile #
-  get    '/profile/:id/view' , to: 'profiles#view', as: "view_profile"
+  get    '/profile/:id' , to: 'profiles#view', as: "view_profile"
 
   # Edit & Update Profile #
   get    '/profile/:id/edit' , to: 'profiles#edit', as: "edit_profile"
