@@ -25,9 +25,13 @@
     <%= form.text_field :username, required: true  %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <h5 type="label">Bio</h5>
     <%= form.text_area :bio, required: false  %>
+  </div>
+
+  <div>
+    <%= form.label :picture %> <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
   </div>
 
   <div class="actions">
