@@ -1,0 +1,16 @@
+                                 root GET    /                                                                                        listings#home
+                     new_user_session GET    /users/login(.:format)                                                                   devise/sessions#new
+                         user_session POST   /users/login(.:format)                                                                   devise/sessions#create
+                 destroy_user_session DELETE /users/logout(.:format)                                                                  devise/sessions#destroy
+                    new_user_password GET    /users/secret/new(.:format)                                                              devise/passwords#new
+                   edit_user_password GET    /users/secret/edit(.:format)                                                             devise/passwords#edit
+                        user_password PATCH  /users/secret(.:format)                                                                  devise/passwords#update
+                                      PUT    /users/secret(.:format)                                                                  devise/passwords#update
+                                      POST   /users/secret(.:format)                                                                  devise/passwords#create
+             cancel_user_registration GET    /users/register/cancel(.:format)                                                         devise/registrations#cancel
+                new_user_registration GET    /users/register/sign_up(.:format)                                                        devise/registrations#new
+               edit_user_registration GET    /users/register/edit/profile(.:format)                                                   devise/registrations#edit
+                    user_registration PATCH  /users/register(.:format)                                                                devise/registrations#update
+                                      PUT    /users/register(.:format)                                                                devise/registrations#update
+                                      DELETE /users/register(.:format)                                                                devise/registrations#destroy
+                                      POST   /users/register(.:format)                                                                devise/registrations#create

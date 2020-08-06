@@ -1,0 +1,36 @@
+<h1>New Profile</h1>
+
+<%= form_with(model: @profile, url: create_profile_path(@profile), local: true) do |form| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h6>* indicates fields required.</h6>
+
+  <div class="field">
+    <h5 type="label">Name*</h5>
+    <%= form.text_field :name, required: true  %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Username*</h5>
+    <%= form.text_field :username, required: true  %>
+  </div>
+
+    <div class="field">
+    <h5 type="label">Bio</h5>
+    <%= form.text_area :bio, required: false  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
