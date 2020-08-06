@@ -1,16 +1,29 @@
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  #Root / Index / Home
   root "listings#home"
 
-  # get    '/signup'   , to: 'users#signup', as: "user_signup" #new
-  # post   '/users'    , to: 'users#create'
+  # User - Devise Authenticated
+  devise_for :users, path_names: {
+    sign_in: 'login', sign_out: 'logout',
+    password: 'secret', confirmation: 'verification',
+    registration: 'register', edit: 'edit/profile'
+  }, controllers: { registrations: "registrations" }
 
-  # get    '/login'    , to: 'users#login',     as: "user_login"
+  # New Profile #
+  get    '/profile/new' , to: 'profiles#new', as: "new_profile"
+  post   '/profiles'    , to: 'profiles#create', as: "create_profile"
 
-  # get    '/user/:id' , to: 'users#edit',      as: "edit_user"
-  # patch  '/user/:id' , to: 'users#update',    as: "update_patch_user"
-  # put    '/user/:id' , to: 'users#update',    as: "update_put_user"
-  # delete '/user/:id' , to: 'users#destroy',   as: "destroy_user"
+  # View Profile #
+  get    '/profile/:id/view' , to: 'profiles#view', as: "view_profile"
+
+  # Edit & Update Profile #
+  get    '/profile/:id/edit' , to: 'profiles#edit', as: "edit_profile"
+  patch  '/profile/:id' , to: 'profiles#update',    as: "update_patch_profile"
+  put    '/profile/:id' , to: 'profiles#update',    as: "update_put_profile"
+
+  # Delete Profile #
+  delete '/profile/:id' , to: 'profiles#destroy',   as: "destroy_profile"
 
 end

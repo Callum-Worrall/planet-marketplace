@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
     if(params[:user_id] != nil)
       @user = User.all.find(params[:user_id])
     end
-
   end
+
+  # def after_sign_in_path_for(resource_or_scope)
+  #   view_profile_path(current_user)
+  # end
 
 end

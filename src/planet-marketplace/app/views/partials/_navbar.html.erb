@@ -25,12 +25,20 @@
           <a class="dropdown-item" href="#">Populated</a>
         </div>
 
-
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <form class="form-inline my-2 my-lg-0">
+    <%if(!user_signed_in?)%>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-outline-warning" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-warning" %>
+    <%else%>
+      <%= link_to "Logout", destroy_user_session_path, method:"DELETE", class: "btn btn-outline-warning" %>
+    <%end%>
     </form>
 
   </div>
