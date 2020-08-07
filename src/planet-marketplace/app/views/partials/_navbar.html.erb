@@ -38,7 +38,7 @@
       <%= link_to "Login", new_user_session_path, class: "btn btn-outline-warning" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-warning" %>
     <%else%>
-      <%= link_to "Profile", view_profile_path(current_user), class: "btn btn-outline-warning" %>
+      <%= link_to "Profile", view_profile_path(current_user), class: "btn btn-outline-info" %>
       <%= link_to "Logout", destroy_user_session_path, method:"DELETE", class: "btn btn-outline-warning" %>
     <%end%>
     </form>
