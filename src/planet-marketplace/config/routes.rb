@@ -30,6 +30,5 @@ Rails.application.routes.draw do
 
   # Delete Profile #
   delete '/profile/:id' , to: 'profiles#destroy',   as: "destroy_profile"
-
   
 end
