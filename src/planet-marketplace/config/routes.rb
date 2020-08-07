@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   devise_for :users, path_names: {
     sign_in: 'login', sign_out: 'logout',
     password: 'secret', confirmation: 'verification',
-    registration: 'register', edit: 'edit/profile'
-  }, controllers: { registrations: "registrations" }
+    registration: 'register'},
+    controllers: { registrations: "registrations" }
   
   # Delete User #
   # match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
@@ -30,6 +30,5 @@ Rails.application.routes.draw do
 
   # Delete Profile #
   delete '/profile/:id' , to: 'profiles#destroy',   as: "destroy_profile"
-
   
 end
