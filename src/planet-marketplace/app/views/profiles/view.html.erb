@@ -5,7 +5,6 @@
 <p><%= @profile.name %></p>
 <p><%= @profile.bio %></p>
 
-
 <p><%= link_to "Edit Profile", edit_profile_path(@profile.id) %> </p>
 
 <p><%= link_to 'Delete Account', user_registration_path, method: :delete if user_signed_in? %> </p>

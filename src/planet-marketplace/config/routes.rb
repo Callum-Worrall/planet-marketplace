@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   }, controllers: { registrations: "registrations" }
   
   # Delete User #
-  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  # match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   # match 'users/:id' => 'users#show', as: :user
-  resources :users
+  # resources :users
 
   # New Profile #
   get    '/profile/new' , to: 'profiles#new', as: "new_profile"
