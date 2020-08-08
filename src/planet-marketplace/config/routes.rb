@@ -7,28 +7,59 @@ Rails.application.routes.draw do
   # User - Devise Authenticated
   devise_for :users, path_names: {
     sign_in: 'login', sign_out: 'logout',
-    password: 'secret', confirmation: 'verification',
-    registration: 'register'},
+    password: 'password', confirmation: 'verification',
+    registration: 'register', edit: 'edit'},
     controllers: { registrations: "registrations" }
-  
-  # Delete User #
-  # match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
-  # match 'users/:id' => 'users#show', as: :user
-  # resources :users
 
+
+  # PROFILES #########################################################################
   # New Profile #
-  get    '/profile/new' , to: 'profiles#new', as: "new_profile"
-  post   '/profiles'    , to: 'profiles#create', as: "create_profile"
+  get    '/profile/new',      to: 'profiles#new',     as: "new_profile"
+  post   '/profiles',         to: 'profiles#create',  as: "create_profile"
 
   # View Profile #
-  get    '/profile/:id' , to: 'profiles#view', as: "view_profile"
+  get    '/profile/:id',      to: 'profiles#view',    as: "view_profile"
 
   # Edit & Update Profile #
-  get    '/profile/:id/edit' , to: 'profiles#edit', as: "edit_profile"
-  patch  '/profile/:id' , to: 'profiles#update',    as: "update_patch_profile"
-  put    '/profile/:id' , to: 'profiles#update',    as: "update_put_profile"
+  get    '/profile/:id/edit', to: 'profiles#edit',    as: "edit_profile"
+  patch  '/profile/:id',      to: 'profiles#update',  as: "update_patch_profile"
+  put    '/profile/:id',      to: 'profiles#update',  as: "update_put_profile"
 
   # Delete Profile #
-  delete '/profile/:id' , to: 'profiles#destroy',   as: "destroy_profile"
+  delete '/profile/:id',      to: 'profiles#destroy', as: "destroy_profile"
+
+
+  # LISTINGS ########################################################################
+  # New Listing #
+  get    '/listing/new',      to: 'listings#new',     as: "new_listing"
+  post   '/listings',         to: 'listings#create',  as: "create_listing"
+
+  # View Listing #
+  get    '/listing/:id',      to: 'listings#view',    as: "view_listing"
+
+  # Edit & Update Listing #
+  get    '/listing/:id/edit', to: 'listings#edit',    as: "edit_listing"
+  patch  '/listing/:id',      to: 'listings#update',  as: "update_patch_listing"
+  put    '/listing/:id',      to: 'listings#update',  as: "update_put_listing"
+
+  # Delete Listing #
+  delete '/listing/:id',      to: 'listings#destroy', as: "destroy_listing"
+
+
+  # PLANETS #########################################################################
+  # New Planet #
+  get    '/planet/new',      to: 'planets#new',     as: "new_planet"
+  post   '/planets',         to: 'planets#create',  as: "create_planet"
+
+  # View Planet #
+  get    '/planet/:id',      to: 'planets#view',    as: "view_planet"
+
+  # Edit & Update Planet #
+  get    '/planet/:id/edit', to: 'planets#edit',    as: "edit_planet"
+  patch  '/planet/:id',      to: 'planets#update',  as: "update_patch_planet"
+  put    '/planet/:id',      to: 'planets#update',  as: "update_put_planet"
+
+  # Delete Planet #
+  delete '/planet/:id',      to: 'planets#destroy', as: "destroy_planet"
   
 end

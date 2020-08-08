@@ -1,18 +1,18 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:view, :edit, :update]
+  before_action :set_listings, only: [:view]
 
   def view
-    @user = current_user
+    @profile.user_id == current_user.id ? @is_user = true : @is_user = false
   end
 
   def edit
   end
 
   def new
-    @user = current_user
     @profile = Profile.new
-    @profile.user_id = @user.id
+    @profile.user_id = current_user.id
   end
 
   def create  
@@ -58,6 +58,10 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find_by user_id: current_user.id
+  end
+
+  def set_listings
+    @listings = Listing.all
   end
 
 end
