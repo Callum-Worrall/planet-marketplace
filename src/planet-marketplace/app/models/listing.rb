@@ -1,7 +1,8 @@
 class Listing < ApplicationRecord
   belongs_to :seller, class_name: "User"
-  belongs_to :buyer, class_name: "User", optional: true
+  has_many :buyer, class_name: "User"
+  has_many :planet
 
+  # , optional: true
   # has_many :planet
-
 end

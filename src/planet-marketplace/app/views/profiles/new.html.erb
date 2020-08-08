@@ -31,8 +31,11 @@
   </div>
 
   <div>
-    <%= form.label :picture %> <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+    <h5 type="label">Upload a Picture</h5>
+    <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
   </div>
+
+  <br>
 
   <div class="actions">
     <%= form.submit %>
