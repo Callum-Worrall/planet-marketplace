@@ -1,9 +1,12 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  before_action :set_listing, only: [:view, :edit, :update, :destroy]
   before_action :set_seller, only: [:new, :create, :edit, :destroy]
+  before_action :set_planets, only: [:new]
+  before_action :set_planet, only: [:view, :edit]
 
   def view
-    
+    @seller = Profile.find_by user_id: @listing.seller_id
   end
 
   def edit
@@ -11,15 +14,16 @@ class ListingsController < ApplicationController
   end
 
   def new
-    @listing = listing.new
+    @listing = Listing.new
     @listing.seller_id = @seller.id
   end
 
   def create  
-    @listing = listing.new(listing_params)
+    @listing = Listing.new(listing_params)
 
-    # @profiles = profile.all
+    @listing.update_attribute(:user_id, @seller.id)
     @listing.update_attribute(:seller_id, @seller.id)
+
 
     respond_to do |format|
       if @listing.save
@@ -53,7 +57,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :picture)
+    params.require(:listing).permit(:title, :planet_id, :description)
   end
 
   # def set_listing
@@ -61,7 +65,24 @@ class ListingsController < ApplicationController
   # end
 
   def set_seller
-    @user = current_user
+    @seller = current_user
+  end
+
+  def set_planets
+    @planets = Planet.all
+  end
+
+  def set_planet
+    @planet = nil
+    @planets = set_planets()
+    @planets.each do |planet|
+      return @planet = planet
+    end
+    return @planet
+  end
+
+  def set_listing
+    @listing = Listing.find(params[:id])
   end
 
 end

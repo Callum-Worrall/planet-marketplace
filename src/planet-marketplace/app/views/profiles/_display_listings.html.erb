@@ -1,0 +1,31 @@
+<div class="card card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th><h6>Title</h6></th>
+      <th><h6>Description</h6></th>
+      <th><h6>Planets</h6></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listings.each do |listing| %>
+      <% if(listing.seller_id == current_user.id) %>
+        <tr>        
+          <%# Details %>
+          <td><h6><%= listing.title %></h6></td>
+          <td><p><%= listing.description %><p></td>
+          <td><h6><%= listing.planet.name %></h6></td>
+
+          <%# Actions %>
+          <td><a class="btn btn-outline-success" href=<%= view_listing_path(listing.id) %> role="button">View</a></td>     
+          <td><a class="btn btn-outline-warning" href=<%= edit_listing_path(listing.id) %> role="button">Edit</a></td>            
+          <td><%= button_to('Destroy', destroy_listing_path(listing.id), class: "btn btn-outline-danger", method: "delete",
+            data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<a class="btn btn-success" href=<%= new_listing_path %> role="button">New listing</a>

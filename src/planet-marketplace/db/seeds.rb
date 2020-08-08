@@ -16,3 +16,5 @@
 #     bio: "big boss loser with a couple of stonks",
 #     credits: 20000.0
 #   }])
+
+planets = Planet.create([{ name: 'Planet_One', description: 'The first planet.'}])

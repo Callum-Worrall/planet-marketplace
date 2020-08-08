@@ -1,10 +1,15 @@
-<h1>View Profile</h1>
+<%if(@is_user == true)%>
+  <h2>Your Profile</h2>
+  <p><%= link_to "Edit Profile", edit_profile_path(@profile.id) %> - <%= link_to 'Delete Account', user_registration_path, method: :delete if user_signed_in? %> </p>
+  <h3>Username: <%= @profile.username %></h3>
+<%else%>
+  <h2><%= @profile.username %>'s Profile</h2>
+<%end%>
 
 <%= image_tag @profile.picture if @profile.picture.attached? %>
-<p><%= @profile.username %></p>
-<p><%= @profile.name %></p>
+<h3>Full Name: <%= @profile.name %></h3>
+<h3>Bio</h3>
 <p><%= @profile.bio %></p>
 
-<p><%= link_to "Edit Profile", edit_profile_path(@profile.id) %> </p>
-
-<p><%= link_to 'Delete Account', user_registration_path, method: :delete if user_signed_in? %> </p>
+<h3>Current Listings</h3>
+<%= render 'display_listings', user: current_user, listings: @listings %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     registration: 'register', edit: 'edit'},
     controllers: { registrations: "registrations" }
 
-    
+
   # PROFILES #########################################################################
   # New Profile #
   get    '/profile/new',      to: 'profiles#new',     as: "new_profile"
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   delete '/profile/:id',      to: 'profiles#destroy', as: "destroy_profile"
 
 
-  # LISTINGS #########################################################################
+  # LISTINGS ########################################################################
   # New Listing #
   get    '/listing/new',      to: 'listings#new',     as: "new_listing"
   post   '/listings',         to: 'listings#create',  as: "create_listing"

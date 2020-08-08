@@ -1,6 +1,6 @@
 class PlanetsController < ApplicationController
-
-  before_action only: [:new, :edit, :create]
+  # before_action only: [:edit, :create]
+  # before_action only: [:new, :edit, :create]
 
   def view
     
@@ -10,15 +10,14 @@ class PlanetsController < ApplicationController
   end
 
   def new
-    @planet = planet.new
+    @planet = Planet.new
   end
 
   def create  
-    @planet = planet.new(planet_params)
+    @planet = Planet.new(planet_params)
 
     respond_to do |format|
       if @planet.save
-        format.html { redirect_to view_planet_path(@planet.id), notice: "A planet's record has been successfully created." }
         format.json { render :view, status: :created, location: @planet }
       else
         format.html { render :new }

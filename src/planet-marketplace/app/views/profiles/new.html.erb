@@ -21,13 +21,21 @@
   </div>
 
   <div class="field">
-    <h5 type="label">Description*</h5>
+    <h5 type="label">Username*</h5>
     <%= form.text_field :username, required: true  %>
   </div>
-  
-  <div>
-    <%= form.label :picture %> <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+
+  <div class="field">
+    <h5 type="label">Bio</h5>
+    <%= form.text_area :bio, required: false  %>
   </div>
+
+  <div>
+    <h5 type="label">Upload a Picture</h5>
+    <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+  </div>
+
+  <br>
 
   <div class="actions">
     <%= form.submit %>
