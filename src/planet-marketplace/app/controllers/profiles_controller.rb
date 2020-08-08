@@ -3,14 +3,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:view, :edit, :update]
 
   def view
-    @user = current_user
   end
 
   def edit
   end
 
   def new
-    @user = current_user
     @profile = Profile.new
     @profile.user_id = @user.id
   end
