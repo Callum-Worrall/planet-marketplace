@@ -1,5 +1,5 @@
 <h1><%= @listing.title %></p>
-<h5>Seller: <%= link_to @seller_profile.username, view_profile_path(@listing.seller_id) %> </h5>
+<h5>Seller: <%= link_to @seller_profile.username, view_profile_path(@seller_profile.id) %> </h5>
 <h3>Description</h3>
 <p><%= @listing.description %></p>
 

@@ -30,7 +30,8 @@ class PlanetsController < ApplicationController
   def update
     respond_to do |format|
       if @planet.update(planet_params)
-        format.html { redirect_to update_patch_planet_path(@planet.id), notice: "A planet's record has been successfully updated." }
+        # format.html { redirect_to update_patch_planet_path(@planet.id), notice: "A planet's record has been successfully updated." }
+        format.html { redirect_to view_profile_path(@planet.user_id), notice: "A planet's record has been successfully updated." }
         format.json { render :show, status: :ok, location: @planet }
       else
         format.html { render :edit }

@@ -10,10 +10,16 @@
   </thead>
   <tbody>
     <% @listings.each do |listing| %>
-      <% if(listing.seller_id == current_user.id) %>
-        <tr>        
+      <% if(listing.sold == true) %>
+        <% if(listing.buyer == @profile.user_id && listing.seller_id == @profile.user_id ) %>
+          <tr>        
           <%# Details %>
           <td><h6><%= listing.title %></h6></td>
+          <td>
+          <%Profile.where(user_id: listing.buyer_id).each do |profile| %>
+            <h6><%=profile.name%> </h6>
+          <%end%>
+          </td>
           <td><p><%= listing.description %><p></td>
           <td>
           <%Planet.where(id: listing.planet_id).each do |planet| %>
@@ -27,6 +33,7 @@
           <td><%= button_to('Destroy', destroy_listing_path(listing.id), class: "btn btn-outline-danger", method: "delete",
               data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
         </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

@@ -40,7 +40,7 @@
       <%else%>
         <h5>Credits: 0</h5>
       <%end%>
-      <%= link_to "Profile", view_profile_path(current_user), class: "btn btn-outline-info" %>
+      <%= link_to @profile.username, view_profile_path(current_user), class: "btn btn-outline-info" %>
       <%= link_to "Logout", destroy_user_session_path, method:"DELETE", class: "btn btn-outline-warning" %>
     <%else%>
       <%# Not Logged in %>

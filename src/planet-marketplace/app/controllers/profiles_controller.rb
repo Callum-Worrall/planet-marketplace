@@ -1,14 +1,15 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: [:view, :edit, :update]
-  before_action :set_listings, only: [:view]
-  before_action :set_planets, only: [:view]
+  before_action :get_profile, only: [:view, :edit, :update]
+  before_action :get_listings, only: [:view]
+  before_action :get_planets, only: [:view]
 
   def view
     @profile.user_id == current_user.id ? @is_user = true : @is_user = false
   end
 
   def edit
+    
   end
 
   def new
@@ -58,15 +59,15 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:name, :username, :bio, :picture)
   end
 
-  def set_profile
-    @profile = Profile.find_by user_id: current_user.id
+  def get_profile
+    @profile = Profile.find(params[:id])
   end
 
-  def set_listings
+  def get_listings
     @listings = Listing.all
   end
 
-  def set_planets
+  def get_planets
     @planets = Planet.all
   end
 

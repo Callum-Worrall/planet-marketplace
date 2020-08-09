@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <% @planets.each do |planet| %>
-      <% if(planet.user_id == current_user.id) %>
+      <% if(planet.user_id == @profile.user_id) %>
         <tr>        
           <%# Details %>
           <td><h6><%= planet.name %></h6></td>

@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
   end
 
   def view
-    @seller = Profile.find_by user_id: @listing.seller_id
+    
   end
 
   def purchase

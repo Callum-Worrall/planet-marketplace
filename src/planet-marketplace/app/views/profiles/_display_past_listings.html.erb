@@ -1,0 +1,36 @@
+<div class="card card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th><h6>Title</h6></th>
+      <th><h6>Buyer</h6></th>
+      <th><h6>Description</h6></th>
+      <th><h6>Planets</h6></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listings.each do |listing| %>
+      <% if(listing.sold == true) %>
+        <% if(listing.buyer == @profile.user_id && listing.seller_id == @profile.user_id ) %>
+          <tr>        
+            <%# Details %>
+            <td><h6><%= listing.title %></h6></td>
+            <td>
+            <%Profile.where(user_id: listing.buyer_id).each do |profile| %>
+              <h6><%=profile.name%> </h6>
+            <%end%>
+            </td>
+            <td><p><%= listing.description %><p></td>
+            <td>
+            <%Planet.where(id: listing.planet_id).each do |planet| %>
+              <h6><%=planet.name%> </h6>
+            <%end%>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>

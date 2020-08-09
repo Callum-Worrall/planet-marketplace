@@ -100,3 +100,7 @@
 - user then uses that army to conquer another users planet
 - there is a period of time in which the other user can send an army to fend off the attack
 - armies to damage to eachother, one wins and the other army is wiped out, there is damage done to the planet too
+
+
+### Entity Relationship Diagram
+![Drag Racing](Dragster.jpg)

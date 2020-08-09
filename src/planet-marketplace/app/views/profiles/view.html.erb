@@ -10,11 +10,30 @@
 <h3>Full Name: <%= @profile.name %></h3>
 <h3>Bio</h3>
 <p><%= @profile.bio %></p>
+<br>
 
 <%if(@is_user == true)%>
-  <%= render 'manipulate_listings', user: current_user, listings: @listings %>
+  <h3>Your Planets</h3>
   <%= render 'manipulate_planets', user: current_user, planets: @planets %>
+  <br>
+  <br>
+  <h3>Your Current Listings</h3>
+  <%= render 'manipulate_listings', user: current_user, listings: @listings %>
+  <br>
+  <br>
+  <h3>Your Past Listings</h3>
+  <%= render 'manipulate_past_listings', user: current_user, listings: @listings %>
+  
 <%else%>
-  <%= render 'display_listings', user: current_user, listings: @listings %>
+  <h3>Owned Planets</h3>
   <%= render 'display_planets', user: current_user, planets: @planets %>
+  <br>
+  <br>
+  <h3>Current Listings</h3>
+  <%= render 'display_listings', user: current_user, listings: @listings %>
+  <br>
+  <br>
+  <h3>Past Listings</h3>
+  <%= render 'display_past_listings', user: current_user, listings: @listings %>
+  
 <%end%>

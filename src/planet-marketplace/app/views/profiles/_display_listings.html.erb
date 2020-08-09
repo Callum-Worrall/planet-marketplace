@@ -1,5 +1,3 @@
-<h3>Current Listings</h3>
-
 <div class="card card-body">
 <table class="table">
   <thead>
@@ -12,12 +10,16 @@
   </thead>
   <tbody>
     <% @listings.each do |listing| %>
-      <% if(listing.seller_id == current_user.id) %>
+      <% if(listing.seller_id == @profile.user_id) %>
         <tr>        
           <%# Details %>
           <td><h6><%= listing.title %></h6></td>
           <td><p><%= listing.description %><p></td>
-          <td><h6><%= listing.planet.name %></h6></td>
+          <td>
+          <%Planet.where(id: listing.planet_id).each do |planet| %>
+            <h6><%=planet.name%> </h6>
+          <%end%>
+          </td>
         </tr>
       <% end %>
     <% end %>
