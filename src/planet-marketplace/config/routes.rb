@@ -45,14 +45,12 @@ Rails.application.routes.draw do
   # Delete Listing #
   delete '/listing/:id',      to: 'listings#destroy', as: "destroy_listing"
 
+  patch  '/listing/:id',      to: 'listings#purchase',  as: "purchase_listing"
 
   # PLANETS #########################################################################
   # New Planet #
   get    '/planet/new',      to: 'planets#new',     as: "new_planet"
   post   '/planets',         to: 'planets#create',  as: "create_planet"
-
-  # View Planet #
-  get    '/planet/:id',      to: 'planets#view',    as: "view_planet"
 
   # Edit & Update Planet #
   get    '/planet/:id/edit', to: 'planets#edit',    as: "edit_planet"

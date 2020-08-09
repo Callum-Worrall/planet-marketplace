@@ -11,5 +11,10 @@
 <h3>Bio</h3>
 <p><%= @profile.bio %></p>
 
-<h3>Current Listings</h3>
-<%= render 'display_listings', user: current_user, listings: @listings %>
+<%if(@is_user == true)%>
+  <%= render 'manipulate_listings', user: current_user, listings: @listings %>
+  <%= render 'manipulate_planets', user: current_user, planets: @planets %>
+<%else%>
+  <%= render 'display_listings', user: current_user, listings: @listings %>
+  <%= render 'display_planets', user: current_user, planets: @planets %>
+<%end%>

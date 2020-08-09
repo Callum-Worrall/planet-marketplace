@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:view, :edit, :update]
   before_action :set_listings, only: [:view]
+  before_action :set_planets, only: [:view]
 
   def view
     @profile.user_id == current_user.id ? @is_user = true : @is_user = false
@@ -20,6 +21,7 @@ class ProfilesController < ApplicationController
 
     # @users = User.all
     @profile.update_attribute(:user_id, current_user.id)
+    @profile.update_attribute(:credits, 10000)
 
     respond_to do |format|
       if @profile.save
@@ -62,6 +64,10 @@ class ProfilesController < ApplicationController
 
   def set_listings
     @listings = Listing.all
+  end
+
+  def set_planets
+    @planets = Planet.all
   end
 
 end
