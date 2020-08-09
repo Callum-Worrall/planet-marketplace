@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% @listings.each do |listing| %>
-      <% if(listing.seller_id == @profile.user_id) %>
+      <% if(listing.seller_id == current_user.id) %>
         <tr>        
           <%# Details %>
           <td><h6><%= listing.title %></h6></td>
@@ -20,9 +20,16 @@
             <h6><%=planet.name%> </h6>
           <%end%>
           </td>
+
+          <%# Actions %>
+          <td><a class="btn btn-outline-success" href=<%= view_listing_path(listing.id) %> role="button">View</a></td>     
+          <td><a class="btn btn-outline-warning" href=<%= edit_listing_path(listing.id) %> role="button">Edit</a></td>            
+          <td><%= button_to('Destroy', destroy_listing_path(listing.id), class: "btn btn-outline-danger", method: "delete",
+              data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 </div>
+<a class="btn btn-success" href=<%= new_listing_path %> role="button">New listing</a>

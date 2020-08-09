@@ -1,0 +1,22 @@
+<div class="card card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th><h6>Name</h6></th>
+      <th><h6>Description</h6></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @planets.each do |planet| %>
+      <% if(planet.user_id == @profile.user_id) %>
+        <tr>        
+          <%# Details %>
+          <td><h6><%= planet.name %></h6></td>
+          <td><p><%= planet.description %><p></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>

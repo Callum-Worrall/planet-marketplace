@@ -1,29 +1,53 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
-  before_action :set_listing, only: [:view, :edit, :update, :destroy]
-  before_action :set_seller, only: [:new, :create, :edit, :destroy]
-  before_action :set_planets, only: [:new]
-  before_action :set_planet, only: [:view, :edit]
-
-  def view
-    @seller = Profile.find_by user_id: @listing.seller_id
+  before_action :get_listing, only: [:view, :edit, :update, :destroy, :purchase]
+  before_action :get_seller, only: [:view, :edit, :destroy, :purchase]
+  before_action :get_all_users_planets, only: [:view, :new, :create, :edit, :destroy]
+  
+  def home
+    @listings = Listing.all
   end
 
-  def edit
+  def view
+    
+  end
 
+  def purchase
+    buyer_profile = Profile.find_by user_id: current_user.id
+    @listing.update_attribute(:sold, true)
+    @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
+    buyer_profile.update_attribute(:credits, (@buyer_profile.credits.to_i - @listing.price.to_i))
+
+    respond_to do |format|
+      if (can_purchase?(@seller_profile, buyer_profile, @listing) && @listing.save && @seller_profile.save && buyer_profile.save)        
+        format.html { redirect_to view_profile_path(@profile.id), notice: 'Your purchase was successful!' }
+        format.json { render :show, status: :ok, location: @listing }
+        # format.json { render :show, status: :ok, location: buyer_profile }
+        # format.json { render :show, status: :ok, location: @seller_profile }
+      else
+        format.html { render :edit }
+        format.json { render json: @listing.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def can_purchase?(seller_profile, buyer_profile, listing)
+    if(seller_profile.user_id != buyer_profile.user_id && buyer_profile.profile.credits >= listing.price)
+      return true
+    else
+      return false
+    end
   end
 
   def new
     @listing = Listing.new
-    @listing.seller_id = @seller.id
   end
 
   def create  
     @listing = Listing.new(listing_params)
 
-    @listing.update_attribute(:user_id, @seller.id)
-    @listing.update_attribute(:seller_id, @seller.id)
-
+    @listing.update_attribute(:user_id, current_user.id)
+    @listing.update_attribute(:seller_id, current_user.id)
 
     respond_to do |format|
       if @listing.save
@@ -34,6 +58,9 @@ class ListingsController < ApplicationController
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def edit
   end
 
   def update
@@ -51,38 +78,33 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'A listing was successfully destroyed.' }
+      format.html { redirect_to (current), notice: 'A listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :planet_id, :description)
+    params.require(:listing).permit(:title, :planet_id, :description, :price)
   end
 
-  # def set_listing
-  #   @listings = listing.find_all seller_id: current_user.id
-  # end
-
-  def set_seller
-    @seller = current_user
+  def get_seller
+    @seller_profile = Profile.find_by user_id: @listing.seller_id
   end
 
-  def set_planets
+  def get_all_planets
     @planets = Planet.all
   end
 
-  def set_planet
-    @planet = nil
-    @planets = set_planets()
-    @planets.each do |planet|
-      return @planet = planet
-    end
-    return @planet
+  def get_all_users_planets
+    @planets = Planet.where(user_id: current_user.id)
   end
 
-  def set_listing
+  def get_listing_planets
+    @planets = Planet.where(id: get_listing.planet_id)
+  end
+
+  def get_listing
     @listing = Listing.find(params[:id])
   end
-
+  
 end

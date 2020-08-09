@@ -1,5 +1,41 @@
-<h1>New Listing</h1>
+<h3>Create a New Listing</h3>
+<%= form_with(model: @listing, url: create_listing_path(@listing), local: true) do |form| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <ul>
+        <% @listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render "new_listing_form", listing: @listing, planets: @planets %>
+  <h6>* indicates fields required.</h6>
 
-<%# <%= render "new_planet_form", planet: @planet %> %> %>
+  <div class="field">
+    <h5 type="label">Title*</h5>
+    <%= form.text_field :title, required: true  %>
+  </div>
+
+  <div class="field">
+      <h5 type="label">Select Planet*</h5>
+    <%= form.collection_select :planet_id, @planets, :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Description</h5>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Price*</h5>
+    <%= form.number_field :price %>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

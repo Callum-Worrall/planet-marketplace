@@ -1,5 +1,6 @@
-<h3>Add a New Planet</h3>
-<%= form_with(model: @planet, url: create_planet_path(@planet), local: true) do |form| %>
+<h3>Editing Planet</h3>
+
+<%= form_with(model: @planet, url: update_patch_planet_path(@planet), local: true) do |form| %>
   <% if @planet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planet.errors.count, "error") %> prohibited this planet from being saved:</h2>
@@ -15,13 +16,13 @@
   <h6>* indicates fields required.</h6>
 
   <div class="field">
-    <h5 type="label">Title*</h5>
-    <%= form.text_field :title, required: true  %>
+    <h5 type="label">Name*</h5>
+    <%= form.text_field :name, required: true  %>
   </div>
 
   <div class="field">
     <h5 type="label">Description</h5>
-    <%= form.text_field :description, required: true  %>
+    <%= form.text_field :description %>
   </div>
   
   <div>

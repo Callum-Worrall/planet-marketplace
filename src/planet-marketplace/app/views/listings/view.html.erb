@@ -1,7 +1,22 @@
 <h1><%= @listing.title %></p>
-<h5>Seller: <%= link_to @seller.username, view_profile_path(@seller.id) %> </h5>
+<h5>Seller: <%= link_to @seller_profile.username, view_profile_path(@seller_profile.id) %> </h5>
 <h3>Description</h3>
 <p><%= @listing.description %></p>
 
-<h3>Planet: <%= @planet.name %></h3>
-<%= image_tag @planet.picture if @planet.picture.attached? %>
+<h3>Listed Planets: </h3>
+<% if(@planets != nil) %>
+  <% @planets.each do |planet| %>
+    <h5><%= planet.name%></h5>
+    <%= image_tag @planet.picture if planet.picture.attached? %>
+  <% end %>
+<% end %>
+
+<h3>Price: <%= @listing.price %></h3>
+
+<% if(@listing.sold) %>
+  <p> Sorry this listing has already been sold! </p>
+<% else %>
+  <% if(current_user.id != @listing.seller_id) %>
+    <%= link_to "Purchase", purchase_listing_path(@listing.id), class: "btn btn-danger" %>
+  <% end %>
+<% end %>
