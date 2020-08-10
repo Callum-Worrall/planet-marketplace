@@ -10,14 +10,14 @@
   </thead>
   <tbody>
     <% @listings.each do |listing| %>
-      <% if(listing.seller_id == @profile.user_id) %>
+      <% if(listing.seller_id == @profile.user_id && listing.sold == false) %>
         <tr>        
           <%# Details %>
-          <td><h6><%= listing.title %></h6></td>
+          <td><h6><%= link_to listing.title, view_listing_path(listing.id) %></h6></td>
           <td><p><%= listing.description %><p></td>
           <td>
           <%Planet.where(id: listing.planet_id).each do |planet| %>
-            <h6><%=planet.name%> </h6>
+            <h6><%=planet.name%></h6>
           <%end%>
           </td>
         </tr>

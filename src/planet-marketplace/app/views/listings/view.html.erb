@@ -17,6 +17,9 @@
   <p> Sorry this listing has already been sold! </p>
 <% else %>
   <% if(current_user.id != @listing.seller_id) %>
-    <%= link_to "Purchase", purchase_listing_path(@listing.id), class: "btn btn-danger" %>
+    <%= form_with(url: purchase_listing_path(@listing.id), method: "post") do %>%
+      <%# <%= link_to "Purchase", purchase_listing_path(@listing.id), class: "btn btn-danger" %> %>
+      <%= submit_tag("Purchase") %>
+    <% end %>
   <% end %>
 <% end %>

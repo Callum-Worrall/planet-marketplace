@@ -1,11 +1,13 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :get_profile, only: [:view, :edit, :update]
-  before_action :get_listings, only: [:view]
-  before_action :get_planets, only: [:view]
+  # before_action :get_listings, only: [:view]
+  # before_action :get_planets, only: [:view]
 
   def view
     @profile.user_id == current_user.id ? @is_user = true : @is_user = false
+    @listings = Listing.all
+    @planets = Planet.all
   end
 
   def edit
@@ -63,12 +65,12 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def get_listings
-    @listings = Listing.all
-  end
+  # def get_listings
+  #   @listings = Listing.all
+  # end
 
-  def get_planets
-    @planets = Planet.all
-  end
+  # def get_planets
+  #   @planets = Planet.all
+  # end
 
 end

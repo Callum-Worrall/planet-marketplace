@@ -13,18 +13,24 @@ class ListingsController < ApplicationController
   end
 
   def purchase
-    buyer_profile = Profile.find_by user_id: current_user.id
+    buyer_profile = Profile.find_by(user_id: current_user.id)
     @listing.update_attribute(:sold, true)
+    @listing.update_attribute(:buyer_id, current_user.id)
     @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
-    buyer_profile.update_attribute(:credits, (@buyer_profile.credits.to_i - @listing.price.to_i))
+    buyer_profile.update_attribute(:credits, (buyer_profile.credits.to_i - @listing.price.to_i))
 
     respond_to do |format|
-      if (can_purchase?(@seller_profile, buyer_profile, @listing) && @listing.save && @seller_profile.save && buyer_profile.save)        
-        format.html { redirect_to view_profile_path(@profile.id), notice: 'Your purchase was successful!' }
+      if (can_purchase?(@seller_profile, buyer_profile, @listing) &&
+        @listing.save &&
+        @seller_profile.save &&
+        buyer_profile.save)     
+        puts "Purchase succeeded."   
+        format.html { redirect_to view_listing_path(@listing.id), notice: 'Your purchase was successful!' }
         format.json { render :show, status: :ok, location: @listing }
         # format.json { render :show, status: :ok, location: buyer_profile }
         # format.json { render :show, status: :ok, location: @seller_profile }
       else
+        puts "Purchase failed."
         format.html { render :edit }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end

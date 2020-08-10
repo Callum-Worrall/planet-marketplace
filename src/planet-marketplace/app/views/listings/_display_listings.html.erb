@@ -1,4 +1,4 @@
-<h3>Current Listings</h3>
+<h3>Listings</h3>
 
 <div class="card card-body">
 <table class="table">
@@ -13,19 +13,23 @@
   </thead>
   <tbody>
     <% @listings.each do |listing| %>
-      <tr>        
-        <%# Details %>
-        <td><h6><%= link_to listing.title, view_listing_path(listing.id) %></h6></td>
-        <%Profile.where(user_id: listing.user_id).each do |profile| %>
-            <td><h6><%= link_to profile.username, view_profile_path(profile.id) %></h6></td>
+      <% if(listing.sold != true) %>
+        <tr>        
+          <%# Details %>
+          <td><h6><%= link_to listing.title, view_listing_path(listing.id) %></h6></td>
+          
+          <%Profile.where(user_id: listing.user_id).each do |profile| %>
+              <td><h6><%= link_to profile.username, view_profile_path(profile.id) %></h6></td>
           <%end%>
-        <td><p><%= listing.description %><p></td>
-        <td>
-          <%Planet.where(id: listing.planet_id).each do |planet| %>
-            <h6><%=planet.name%> </h6>
-          <%end%>
-        </td>
-      </tr>
+          
+          <td><p><%= listing.description %><p></td>
+          <td>
+            <%Planet.where(id: listing.planet_id).each do |planet| %>
+              <h6><%=planet.name%> </h6>
+            <%end%>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

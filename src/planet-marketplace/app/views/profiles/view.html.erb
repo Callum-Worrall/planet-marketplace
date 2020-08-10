@@ -21,6 +21,10 @@
   <%= render 'manipulate_listings', user: current_user, listings: @listings %>
   <br>
   <br>
+  <h3>Your Purchases</h3>
+  <%= render 'display_purchased_listings', user: current_user, listings: @listings %>
+  <br>
+  <br>
   <h3>Your Past Listings</h3>
   <%= render 'manipulate_past_listings', user: current_user, listings: @listings %>
   
@@ -30,7 +34,7 @@
   <br>
   <br>
   <h3>Current Listings</h3>
-  <%= render 'display_listings', user: current_user, listings: @listings %>
+  <%= render 'display_current_listings', user: current_user, listings: @listings %>
   <br>
   <br>
   <h3>Past Listings</h3>
