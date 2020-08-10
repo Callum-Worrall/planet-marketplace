@@ -6,7 +6,8 @@
       <th><h6>Buyer</h6></th>
       <th><h6>Description</h6></th>
       <th><h6>Planets</h6></th>
-      <th colspan="4"></th>
+      <th><h6>Price</h6></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
   <tbody>
@@ -15,21 +16,11 @@
         <% if(listing.seller_id == @profile.user_id) %>
           <tr>        
             <%# Details %>
-            <td><h6><%= link_to listing.title, view_listing_path(listing.id) %></h6></td>
-
-            <%Profile.where(user_id: listing.buyer_id).each do |profile| %>
-              <td><h6><%= link_to profile.username, view_profile_path(profile.id) %></h6></td>
-            <%end%>
-
-            <td><h6><%= Profile.get_username(listing.buyer_id) %></h6></td>
-
+            <td><h6><%= link_to listing.title, view_listing_path(listing) %></h6></td>
+            <td><h6><%= link_to Profile.find_by(user_id: listing.buyer_id).username, view_profile_path(Profile.find_by(user_id: listing.buyer_id)) %></h6></td>
             <td><p><%= listing.description %><p></td>
-            
-            <td>
-            <%Planet.where(id: listing.planet_id).each do |planet| %>
-              <h6><%=planet.name%> </h6>
-            <%end%>
-            </td>
+            <td><h6> <%= Planet.find_by(id: listing.planet_id).name %></h6></td>
+            <td><p><%= listing.price.to_i %><p></td>
           </tr>
 
         <% end %>

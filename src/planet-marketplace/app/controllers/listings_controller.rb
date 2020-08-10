@@ -2,7 +2,8 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :get_listing, only: [:view, :edit, :update, :destroy, :purchase]
   before_action :get_seller, only: [:view, :edit, :destroy, :purchase]
-  before_action :get_all_users_planets, only: [:view, :new, :create, :edit, :destroy]
+  # before_action :get_all_users_planets, only: [:view, :new, :create, :edit, :destroy]
+  before_action :get_listed_planets, only: [:view, :new, :create, :edit, :destroy]
   
   def home
     @listings = Listing.all
@@ -14,10 +15,13 @@ class ListingsController < ApplicationController
 
   def purchase
     buyer_profile = Profile.find_by(user_id: current_user.id)
+    planets = Planet.where(id: @listing.planet_id)
+    
     @listing.update_attribute(:sold, true)
     @listing.update_attribute(:buyer_id, current_user.id)
     @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
     buyer_profile.update_attribute(:credits, (buyer_profile.credits.to_i - @listing.price.to_i))
+    planets.each { |planet| planet.update_attribute(:user_id, current_user.id)}
 
     respond_to do |format|
       if (can_purchase?(@seller_profile, buyer_profile, @listing) &&
@@ -94,7 +98,7 @@ class ListingsController < ApplicationController
   end
 
   def get_seller
-    @seller_profile = Profile.find_by user_id: @listing.seller_id
+    @seller_profile = Profile.find_by(user_id: @listing.seller_id)
   end
 
   def get_all_planets
@@ -105,7 +109,7 @@ class ListingsController < ApplicationController
     @planets = Planet.where(user_id: current_user.id)
   end
 
-  def get_listing_planets
+  def get_listed_planets
     @planets = Planet.where(id: get_listing.planet_id)
   end
 
