@@ -19,9 +19,9 @@
           <%# Details %>
           <td><h6><%= link_to listing.title, view_listing_path(listing) %></h6></td>
           <td><h6><%= link_to Profile.find_by(user_id: listing.seller_id).username, view_profile_path(Profile.find_by(user_id: listing.seller_id)) %></h6></td>
-          <td><p><%= listing.description %><p></td>
+          <td><p><%= listing.description %></p></td>
           <td><h6> <%= Planet.find_by(id: listing.planet_id).name %></h6></td>
-          <td><p><%= listing.price.to_i %><p></td>
+          <td><p><%= listing.price.to_i %></p></td>
         </tr>
       <% end %>
     <% end %>

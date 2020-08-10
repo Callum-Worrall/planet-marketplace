@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def after_sign_in_path_for(resource)
+  #   if(Profile.find_by(user_id: current_user) == nil)
+  #     new_profile_path(Profile.find_by(user_id: current_user))
+  #   end
+  # end
+
 end

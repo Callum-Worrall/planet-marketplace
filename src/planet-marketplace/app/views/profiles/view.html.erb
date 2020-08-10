@@ -13,31 +13,31 @@
 <br>
 
 <%if(@is_user == true)%>
-  <h3>Your Planets</h3>
-  <%= render 'manipulate_planets', user: current_user, planets: @planets %>
+  <h3 class="listings-container-heading">Your Planets</h3>
+  <%= render 'profiles/manipulate/planets', user: current_user, planets: @planets %>
   <br>
   <br>
-  <h3>Your Current Listings</h3>
-  <%= render 'manipulate_listings', user: current_user, listings: @listings %>
+  <h3 class="listings-container-heading">Your Current Listings</h3>
+  <%= render 'profiles/manipulate/listings', user: current_user, listings: Listing.where(seller_id: @profile.user_id, sold: false) %>
   <br>
   <br>
-  <h3>Your Purchases</h3>
-  <%= render 'display_purchased_listings', user: current_user, listings: @listings %>
+  <h3 class="listings-container-heading">Your Purchases</h3>
+  <%= render 'partials/display/cards/listings',
+    listings: Listing.where(buyer_id: current_user) %>
   <br>
   <br>
-  <h3>Your Past Listings</h3>
-  <%= render 'manipulate_past_listings', user: current_user, listings: @listings %>
-  
+  <h3 class="listings-container-heading">Your Past Listings</h3>
+  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: true) %>
 <%else%>
-  <h3>Owned Planets</h3>
-  <%= render 'display_planets', user: current_user, planets: @planets %>
+  <h3 class="listings-container-heading">Owned Planets</h3>
+  <%= render 'profiles/display/planets', user: current_user, planets: @planets %>
   <br>
   <br>
-  <h3>Current Listings</h3>
-  <%= render 'display_current_listings', user: current_user, listings: @listings %>
+  <h3 class="listings-container-heading">Current Listings</h3>
+  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: false) %>
   <br>
   <br>
-  <h3>Past Listings</h3>
-  <%= render 'display_past_listings', user: current_user, listings: @listings %>
+  <h3 class="listings-container-heading">Past Listings</h3>
+  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: true) %>
   
 <%end%>

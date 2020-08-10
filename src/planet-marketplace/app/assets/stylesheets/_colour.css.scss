@@ -1,0 +1,65 @@
+$tan1:rgb(236, 185, 126);
+$tan2:rgb(182, 155, 86);
+
+$red: rgb(207, 67, 69);
+$pink: rgb(234, 92, 94);
+$turquoise: rgb(23, 202, 142);
+$cyan: rgb(41, 160, 164);
+$blue: rgb(33, 100, 146);
+$liver: rgb(81, 53, 83);
+
+$grey: rgb(92, 92, 92);
+$dark-grey: rgb(56, 56, 56);
+
+$primary_background: $grey;
+
+$primary_text: black;
+$primary_link: $pink;
+$primary_link_hover: $red;
+
+$heading_text: $tan1;
+$heading_link: black;
+$heading_link_hover: black;
+
+$navbar_background: $dark-grey;
+$navbar_text: $tan1;
+$navbar_link: $tan1;
+$navbar_link_hover: $red;
+
+.body-colour{
+    background-color: $primary_background;
+    color: $primary_text;
+}
+h1{ color: $heading_text !important; }
+h3{ color: $heading_text !important; }
+
+p{ color: $primary_text !important; }
+a{ color: $primary_link !important; }
+
+
+.navbar { background-color: $navbar_background }
+.body-custom { background-color: $primary_background; }
+.footer-custom{ background-color: $primary_background; }
+
+.card-header{ background-color: $tan2 !important; }
+.card-body{ background-color: $tan1 !important; }
+
+.card-header a{ color: $primary_text !important; }
+.card-header a:link { color:$primary_link !important; }
+.card-header a:visited { color: $primary_link; }
+.card-header a:hover { color: $heading_link_hover; }
+.card-header a:active { color: $heading_link_hover; }
+
+.card-body a{ color: $primary_text !important; }
+.card-body a:link { color:$primary_link !important; }
+.card-body a:visited { color: $primary_link; }
+.card-body a:hover { color: $navbar_link_hover; }
+.card-body a:active { color: $navbar_link_hover; }
+
+.navbar { color: $navbar_text !important; }
+.navbar a{ color: $navbar_text !important; }
+.navbar a:link { color:$navbar_text; }
+.navbar a:visited { color: $navbar_text; }
+.navbar a:hover { color: $navbar_link_hover; }
+.navbar a:active { color: $navbar_link_hover; }
+

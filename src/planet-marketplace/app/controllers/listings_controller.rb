@@ -1,9 +1,9 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :get_listing, only: [:view, :edit, :update, :destroy, :purchase]
   before_action :get_seller, only: [:view, :edit, :destroy, :purchase]
-  # before_action :get_all_users_planets, only: [:view, :new, :create, :edit, :destroy]
-  before_action :get_listed_planets, only: [:view, :new, :create, :edit, :destroy]
+  before_action :get_all_users_planets, only: [:view, :new, :create, :edit, :destroy]
+  before_action :get_listed_planets, only: [:view, :edit, :destroy]
   
   def home
     @listings = Listing.all
@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
   end
 
   def can_purchase?(seller_profile, buyer_profile, listing)
-    if(seller_profile.user_id != buyer_profile.user_id && buyer_profile.profile.credits >= listing.price)
+    if(seller_profile.user_id != buyer_profile.user_id && buyer_profile.credits >= listing.price)
       return true
     else
       return false
@@ -58,6 +58,7 @@ class ListingsController < ApplicationController
 
     @listing.update_attribute(:user_id, current_user.id)
     @listing.update_attribute(:seller_id, current_user.id)
+    @listing.update_attribute(:sold, false)
 
     respond_to do |format|
       if @listing.save
@@ -88,7 +89,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to (current), notice: 'A listing was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'A listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

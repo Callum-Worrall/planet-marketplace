@@ -1,3 +1,3 @@
-<h1>Home</h1>
 
-<%= render 'display_all_active_listings', user: current_user, listings: @listings %>
+<h1 class="listings-container-heading">Featured Listings</h1>
+<%= render 'partials/display/cards/listings', listings: Listing.where(sold: false) %>

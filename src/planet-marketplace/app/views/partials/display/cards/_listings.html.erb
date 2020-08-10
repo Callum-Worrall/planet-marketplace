@@ -1,0 +1,5 @@
+<div class="row row-cols-2 row-cols-md-4">
+  <% listings.each do |listing| %>
+    <%= render 'partials/display/cards/listing', listing: listing %>
+  <% end %>
+</div>

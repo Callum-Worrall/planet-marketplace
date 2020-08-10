@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @profile.user_id = current_user.id
+    @profile.user_id = current_user
   end
 
   def create  
@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to view_profile_path(@profile.id), notice: 'profile was successfully created.' }
+        format.html { redirect_to view_profile_path(@profile), notice: 'profile was successfully created.' }
         format.json { render :view, status: :created, location: @profile }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to update_patch_profile_path(@profile.id), notice: 'Profile was successfully updated.' }
+        format.html { redirect_to update_patch_profile_path(@profile), notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }

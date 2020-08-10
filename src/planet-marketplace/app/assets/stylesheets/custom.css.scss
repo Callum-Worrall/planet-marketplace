@@ -1,9 +1,13 @@
 @import 'bootstrap/dist/css/bootstrap';
-
-.navbar { background-color: #FDF6EA !important; }
+@import "header";
+@import "footer";
+@import "colour";
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
   
 .navbar-brand { font-size: 3rem; }
 
-h1 { color: black; }
+.listings-container-heading { text-align: center; }
 
-h5 { color: black; }
+.body-custom { font-family: 'Rubik', sans-serif; font-size: 15px; }
+
+.card-body { background-color: $tan1; }
