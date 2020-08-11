@@ -1,17 +1,20 @@
 $tan1:rgb(236, 185, 126);
-$tan2:rgb(182, 155, 86);
+$tan2:rgb(211, 163, 109);
 
 $red: rgb(207, 67, 69);
 $pink: rgb(234, 92, 94);
+$dark_turquoise: rgb(25, 175, 125);
 $turquoise: rgb(23, 202, 142);
 $cyan: rgb(41, 160, 164);
 $blue: rgb(33, 100, 146);
+$light_blue: rgb(47, 134, 192);
 $liver: rgb(81, 53, 83);
 
 $grey: rgb(92, 92, 92);
 $dark-grey: rgb(56, 56, 56);
 
 $primary_background: $grey;
+$secondary_background: $dark-grey;
 
 $primary_text: black;
 $primary_link: $pink;
@@ -19,16 +22,24 @@ $primary_link_hover: $red;
 
 $heading_text: $tan1;
 $heading_link: black;
-$heading_link_hover: black;
+$heading_link_hover: $red;
+
+$card_title_text: black;
+$card_title_link: $cyan;
+$card_title_link_hover: $red;
+
+$card_body_text: black;
+$card_body_link: $cyan;
+$card_body_link_hover: $red;
 
 $navbar_background: $dark-grey;
 $navbar_text: $tan1;
 $navbar_link: $tan1;
 $navbar_link_hover: $red;
 
-.body-colour{
-    background-color: $primary_background;
-    color: $primary_text;
+body{
+    background-color: $primary_background !important; 
+    color: $primary_text !important; 
 }
 h1{ color: $heading_text !important; }
 h3{ color: $heading_text !important; }
@@ -36,30 +47,102 @@ h3{ color: $heading_text !important; }
 p{ color: $primary_text !important; }
 a{ color: $primary_link !important; }
 
+.btn-outline-search
+{
+    color: $primary_text !important; 
+    border-color: $tan1 !important; 
+    border-top-color: $tan1 !important; 
+    border-right-color: $tan1 !important; 
+    border-bottom-color: $tan1 !important; 
+    border-left-color: $tan1 !important; 
+}
 
 .navbar { background-color: $navbar_background }
-.body-custom { background-color: $primary_background; }
+// .body-custom { background-color: $primary_background; }
+.dropdown-menu { background-color: $navbar_background !important;  }
+.dropdown-divider { 
+    border-top: 1px solid $tan1 !important;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: $tan1 !important;
+}
+.dropdown-item:hover { background-color: black !important;   }
+
+.table th, .table td {
+    border-top: 1px solid black !important;
+    border-top-color: black !important;
+}
+.table thead th {
+    border-bottom: 1px solid black !important;
+    border-bottom-color: black !important;
+}
+
 .footer-custom{ background-color: $primary_background; }
-
-.card-header{ background-color: $tan2 !important; }
-.card-body{ background-color: $tan1 !important; }
-
-.card-header a{ color: $primary_text !important; }
-.card-header a:link { color:$primary_link !important; }
-.card-header a:visited { color: $primary_link; }
-.card-header a:hover { color: $heading_link_hover; }
-.card-header a:active { color: $heading_link_hover; }
-
-.card-body a{ color: $primary_text !important; }
-.card-body a:link { color:$primary_link !important; }
-.card-body a:visited { color: $primary_link; }
-.card-body a:hover { color: $navbar_link_hover; }
-.card-body a:active { color: $navbar_link_hover; }
 
 .navbar { color: $navbar_text !important; }
 .navbar a{ color: $navbar_text !important; }
-.navbar a:link { color:$navbar_text; }
-.navbar a:visited { color: $navbar_text; }
-.navbar a:hover { color: $navbar_link_hover; }
-.navbar a:active { color: $navbar_link_hover; }
+.navbar a:link { color:$navbar_text !important;  }
+.navbar a:visited { color: $navbar_link !important;  }
+.navbar a:hover { color: $navbar_text !important;  }
+.navbar a:active { color: $navbar_link_hover !important;  }
+
+
+.card { background-color: $tan1 !important; }
+.card a{ color: $card_body_link !important; }
+.card a:link { color:$card_body_link !important; }
+.card a:visited { color: $card_body_link !important;  }
+.card a:hover { color: $card_body_link_hover !important;  }
+.card a:active { color: $card_body_link_hover !important;  }
+
+// .card-title{ background-color: $tan2 !important; }
+.card-title a{ color: $card_title_link !important; }
+.card-title a:link { color:$card_title_link !important; }
+.card-title a:visited { color: $card_title_link !important;  }
+.card-title a:hover { color: $card_title_link_hover !important;  }
+.card-title a:active { color: $card_title_link_hover !important;  }
+
+// New Button
+#btn-new
+{
+    color: $primary_text !important;
+    background-color: $dark_turquoise !important; 
+
+    border-color: $primary_text !important; 
+    border-top-color: $primary_text !important; 
+    border-right-color: $primary_text !important; 
+    border-bottom-color: $primary_text !important; 
+    border-left-color: $primary_text !important; 
+}
+#btn-new:hover { color: $primary_text !important; background-color: $turquoise !important;  }
+#btn-new:visited { color: $primary_text !important; }
+
+// Edit Button
+#btn-edit
+{
+    color: $primary_text !important;
+    background-color: $blue !important; 
+
+    border-color: $primary_text !important; 
+    border-top-color: $primary_text !important; 
+    border-right-color: $primary_text !important; 
+    border-bottom-color: $primary_text !important; 
+    border-left-color: $primary_text !important; 
+}
+#btn-edit:hover { color: $primary_text !important; background-color: $light_blue !important;  }
+#btn-edit:visited { color: $primary_text !important; }
+
+// Delete Button
+#btn-delete
+{
+    color: $primary_text !important;
+    background-color: $red !important; 
+
+    border-color: $primary_text !important; 
+    border-top-color: $primary_text !important; 
+    border-right-color: $primary_text !important; 
+    border-bottom-color: $primary_text !important; 
+    border-left-color: $primary_text !important; 
+}
+#btn-delete:hover {  color: $primary_text !important; background-color: $pink !important;  }
+#btn-delete:visited { color: $primary_text !important; }
 

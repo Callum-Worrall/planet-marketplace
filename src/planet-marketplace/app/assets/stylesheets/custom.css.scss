@@ -3,11 +3,15 @@
 @import "footer";
 @import "colour";
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-  
+
 .navbar-brand { font-size: 3rem; }
 
 .listings-container-heading { text-align: center; }
 
-.body-custom { font-family: 'Rubik', sans-serif; font-size: 15px; }
+a { text-decoration: none !important; }
+a:link { text-decoration: none !important; }
+a:visited { text-decoration: none !important; }
+a:hover { text-decoration: none !important; }
+a:active  { text-decoration: none !important; }
 
-.card-body { background-color: $tan1; }
+html { font-family: 'Rubik', sans-serif; font-size: 18px; }

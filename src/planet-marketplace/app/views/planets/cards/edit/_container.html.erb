@@ -1,0 +1,6 @@
+<div class="row row-cols-2 row-cols-md-4">
+  <% planets.each do |planet| %>
+    <%= render 'planets/cards/edit/card', planet: planet %>
+  <% end %>
+</div>
+<%= render 'planets/buttons/new' %>

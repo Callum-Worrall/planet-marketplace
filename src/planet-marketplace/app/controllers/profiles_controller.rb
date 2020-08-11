@@ -6,8 +6,10 @@ class ProfilesController < ApplicationController
 
   def view
     @profile.user_id == current_user.id ? @is_user = true : @is_user = false
-    @listings = Listing.all
-    @planets = Planet.all
+    @current_listings = Listing.where(seller_id: @profile.user_id, sold: false)
+    @owned_planets = Planet.where(user_id: @profile.user_id)
+    @past_listings = Listing.where(seller_id: @profile.user_id, sold: true)
+    @user_purchases = Listing.where(buyer_id: @profile.user_id)
   end
 
   def edit

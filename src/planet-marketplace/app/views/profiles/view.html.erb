@@ -1,6 +1,7 @@
 <%if(@is_user == true)%>
   <h2>Your Profile</h2>
-  <p><%= link_to "Edit Profile", edit_profile_path(@profile.id) %> - <%= link_to 'Delete Account', user_registration_path, method: :delete if user_signed_in? %> </p>
+  <p><%= link_to "Edit Profile", edit_profile_path(@profile.id) %> -
+  <%= link_to 'Delete Account', user_registration_path, method: :delete if user_signed_in? %> </p>
   <h3>Username: <%= @profile.username %></h3>
 <%else%>
   <h2><%= @profile.username %>'s Profile</h2>
@@ -12,32 +13,28 @@
 <p><%= @profile.bio %></p>
 <br>
 
-<%if(@is_user == true)%>
+<%if(@is_user == true && @profile.user_id == current_user.id)%>
+
   <h3 class="listings-container-heading">Your Planets</h3>
-  <%= render 'profiles/manipulate/planets', user: current_user, planets: @planets %>
-  <br>
-  <br>
+  <%= render 'planets/cards/edit/container', planets: @owned_planets %>
+  <br> <br>
   <h3 class="listings-container-heading">Your Current Listings</h3>
-  <%= render 'profiles/manipulate/listings', user: current_user, listings: Listing.where(seller_id: @profile.user_id, sold: false) %>
-  <br>
-  <br>
+  <%= render 'listings/cards/edit/container', listings: @current_listings %>
+  <br> <br>
   <h3 class="listings-container-heading">Your Purchases</h3>
-  <%= render 'partials/display/cards/listings',
-    listings: Listing.where(buyer_id: current_user) %>
-  <br>
-  <br>
+  <%= render 'listings/cards/view/container', listings: @user_purchases %>
+  <br> <br>
   <h3 class="listings-container-heading">Your Past Listings</h3>
-  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: true) %>
-<%else%>
+  <%= render 'listings/cards/view/container', listings: @past_listings %>
+
+<%elsif(@profile.user_id != current_user.id)%>
   <h3 class="listings-container-heading">Owned Planets</h3>
-  <%= render 'profiles/display/planets', user: current_user, planets: @planets %>
-  <br>
-  <br>
+  <%= render 'planets/cards/view/container', planets: @owned_planets %>
+  <br> <br>
   <h3 class="listings-container-heading">Current Listings</h3>
-  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: false) %>
-  <br>
-  <br>
+  <%= render 'listings/cards/view/container', listings: @current_listings %>
+  <br> <br>
   <h3 class="listings-container-heading">Past Listings</h3>
-  <%= render 'partials/display/cards/listings', listings: Listing.where(seller_id: @profile.user_id, sold: true) %>
+  <%= render 'listings/cards/view/container', listings: @past_listings %>
   
 <%end%>

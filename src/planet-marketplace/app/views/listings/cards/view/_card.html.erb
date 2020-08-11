@@ -1,0 +1,10 @@
+<div col mb-4>
+  <div class="card align-items-center">
+    <h5 class="card-title"><%= link_to listing.title, view_listing_path(listing) %></h5>
+    <div class="align-items-center">
+      <%= image_tag Planet.find_by(id: listing.planet_id).picture if Planet.find_by(id: listing.planet_id).picture.attached? %>
+      <p>Planet: <%= Planet.find_by(id: listing.planet_id).name %></p>
+      <p>Price: <%= listing.price.to_i %></p>
+    </div>
+  </div>
+</div>

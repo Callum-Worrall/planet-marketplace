@@ -14,20 +14,23 @@ class ListingsController < ApplicationController
   end
 
   def purchase
-    buyer_profile = Profile.find_by(user_id: current_user.id)
-    planets = Planet.where(id: @listing.planet_id)
-    
     @listing.update_attribute(:sold, true)
     @listing.update_attribute(:buyer_id, current_user.id)
-    @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
+    buyer_profile = Profile.find_by(user_id: current_user.id)
     buyer_profile.update_attribute(:credits, (buyer_profile.credits.to_i - @listing.price.to_i))
+    @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
+    
     planets.each { |planet| planet.update_attribute(:user_id, current_user.id)}
 
     respond_to do |format|
       if (can_purchase?(@seller_profile, buyer_profile, @listing) &&
         @listing.save &&
         @seller_profile.save &&
-        buyer_profile.save)     
+        buyer_profile.save)
+        planets = Planet.where(id: @listing.planet_id)
+        planets.each { |planet|
+          planet.update_attribute(:user_id, current_user.id)
+          planet.save }
         puts "Purchase succeeded."   
         format.html { redirect_to view_listing_path(@listing.id), notice: 'Your purchase was successful!' }
         format.json { render :show, status: :ok, location: @listing }

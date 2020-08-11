@@ -1,0 +1,12 @@
+<div col mb-4>
+  <div class="card align-items-center">
+    <h5 class="card-title"><%= planet.name %></h5>
+    <div class="card align-items-center">
+      <%= image_tag planet.picture if planet.picture.attached? %>
+      <p>Description: <%= planet.description %></p>
+      <%= render 'planets/buttons/edit', planet: planet %>
+      <%= render 'planets/buttons/delete', planet: planet %>
+      <%# <p>User ID: <%= planet.user_id %></p> %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="row row-cols-2 row-cols-md-4">
+  <% listings.each do |listing| %>
+    <%= render 'listings/cards/edit/card', listing: listing %>
+  <% end %>
+</div>
+<%= render 'listings/buttons/new' %>
