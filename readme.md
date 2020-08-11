@@ -1,51 +1,24 @@
 
 # Planet Marketplace
 
-Website: 
-GitHub: https://github.com/Callum-Worrall/planet-marketplace
-Trello: 
+**Website**: https://stormy-stream-56320.herokuapp.com/
+**GitHub**: https://github.com/Callum-Worrall/planet-marketplace
+**Trello**: https://trello.com/b/aZBESBCJ/marketplace-app
 
 ## Purpose
-The Planet Marketplace is fictional application that was created to demonstrate an understanding of how marketplaces are structured.
+The Planet Marketplace is fictional application that was created to demonstrate an understanding of how marketplaces are structured, it also intended to be used for entertainment used for amusement as it is about fictional characters trading and selling planets and will eventually have aspects of game mechanics.
 
-## Functionality
+## Features & Functionality
+#### Current
 Create user profiles, create and trade planets.
 
-Future plans, include:
+#### Future
  - Planet Resource Generation: Acquire resources via built structures that can be used for a variety of construction purposes or sold in raw bulk.
  - Army Building: Requisition armies from a planets population or buy a mercenary army.
  - Planet Claiming: Acquisition through conquering using armies, either 'unclaimed' planets or perhaps even other warlords planets.
 
-## Who is the Planet Marketplace for?
-
- in particular this is not so much a problem but a fun application used for amusement as it is about fictional characters trading and selling planets and is incredibly unrealistic. It is built in such a way that it can be further developed into a browser-based marketplace game of sorts with ambitions of extra features such as resource collection and structure building.
-
-The fictional problem this solves however is to provide an easy and convenient method for 
-
-
-## Target Audience
-Aspiring and accomplished evil alien warlords who want to buy and sell the planets they have conquered.
-
-### Explain the different high-level components (abstractions) in your App - explain and show understanding
-### Users and Profiles
-
-The user-profile combination is used for everything to do with a user and their information, the user section is used solely for authentication and the profile side is used to store extra information and is the side of the users that is most interacted with. The way this works 
-
-### Listings and Planets
-
-Listings and planets is what the site is all about, planets are what is being sold and bought, and listings are the method of transaction. Listings can technically contain several planets, but at this point only one is possible per listing. Listings are posted by users and then bought by other users for the fictional 'credits' currency that the site uses.
-
-### Partials
-
-I've used several partials within the application for easier readability and to lower repetition.
-
-#### Cards and Card Containers
-
-Planets and listings each have their own partials for when they are being viewed in groups, for planets this is they only way they are viewed.
-
-#### Buttons and Links
-
-There are various buttons and links used throughout the application, they are based on bootstraps buttons, again to reduce repetition and better control across the site. Examples of buttons that have been made into partials are, new, edit and delete buttons for listings and planets.
+## Target Audience - Who is the Planet Marketplace for?
+Aspiring and accomplished evil alien warlords who want to buy and sell the planets they have conquered, seriously though it's got aspects that borrow from economically-based games so will be appealing to those who enjoy fictional marketplaces and enjoy empire management games.
 
 
 
@@ -74,6 +47,7 @@ The Devise gem is used to validate and authenticate all interaction with a users
 
 ##### Heroku
 Heroku is used to publish the web application to the internet.
+
 
 
 ## User Stories
@@ -111,8 +85,38 @@ Heroku is used to publish the web application to the internet.
 
   
 
-## Entity Relationship Diagram - Current / Core Models
+## High-level Components
+
+### Users and Profiles
+
+The user-profile combination is used for everything to do with a user and their information, the user section is used solely for authentication and the profile side is used to store extra information and is the side of the users that is most interacted with. The way this works 
+
+### Listings and Planets
+
+Listings and planets is what the site is all about, planets are what is being sold and bought, and listings are the method of transaction. Listings can technically contain several planets, but at this point only one is possible per listing. Listings are posted by users and then bought by other users for the fictional 'credits' currency that the site uses.
+
+### Partials
+
+I've used several partials within the application for easier readability and to lower repetition.
+
+#### Cards and Card Containers
+
+Planets and listings each have their own partials for when they are being viewed in groups, for planets this is they only way they are viewed.
+
+#### Buttons and Links
+
+There are various buttons and links used throughout the application, they are based on bootstraps buttons, again to reduce repetition and better control across the site. Examples of buttons that have been made into partials are, new, edit and delete buttons for listings and planets.
+
+
+
+## Entity Relationship Diagram (ERD)
+
+### ERD - Current / Core Models
+
 I created a more complex ERD (which I've included below this one) as I was coming up with the idea for the application, however as time proceeded I realised I needed to simplify my goals for the purpose of time management and the assessment so this 'simple' ERD resembles the project as it currently stands.
+
+
+
 ![Planet Marketplace - Simple Entity Relationship Diagram](docs/erd_current.png)
 
 #### Core Database Relations
@@ -134,7 +138,10 @@ Describe your project’s model in terms of the relationships (active record ass
 
 **Planets** contain a many to one foreign key to the **users** table, which indicate who owns them.
 
-## Entity Relationship Diagram - Original / Advanced Models (Outdated)
+
+
+### ERD - Original / Advanced Models (Outdated)
+
 Where I would like the project to go given a larger timeframe, this ERD needs an update to indicate the new user and profile relationship.
 
 ![Planet Marketplace - Preferred Entity Relationship Diagram](docs/erd_original.png)
@@ -143,7 +150,9 @@ Where I would like the project to go given a larger timeframe, this ERD needs an
 
 To be defined.
 
-## Site Map - Current / Core
+
+
+## Site Map - Current / Core Pages
 
 This is a map of the site as it currently stands.
 
@@ -151,9 +160,9 @@ This is a map of the site as it currently stands.
 
 ##  Site Map - Original / Advanced (Outdated)
 
-This was the original site map that was planned alongside the original Entity Relation Diagram.
+This was the original site map that was planned alongside the original Entity Relation Diagram but was subject to advanced feature creep and was unfortunately unrealistic given the timeframe.
 
-![Site Map - Original / Advanced (Image)](docs/wireframes/.png)
+![Site Map - Original / Advanced (Image)](docs/site_map_original.png)
 
 ## Wireframes
 Despite my attempts I still have not managed to alter the websites appearance to the original design of the wireframes, especially as some content like the reviews system have not made it into the project as of yet.
@@ -194,10 +203,19 @@ In it's current state I have not yet implemented a search function and as such t
 
 ## Task Allocation and Tracking - Trello
 
-Trello was used throughout the course of project and it was seperated into 5 phases up to this point, eventually phases were archived to declutter and easier keep track of progress.
+Trello was used throughout the course of project and it was separated into 5 phases up to this point, eventually phases were archived to declutter and easier keep track of progress.
 Each card in the original phases had due dates, some of these were adapted as certain tasks took longer than expected.
 
-Below are some screenshots of several stages of the project.
+Below are some screenshots of several stages of the project, the documentation and research sections of the Trello board were created weeks before, with the implementation phases created later, after planning was complete.
+
+**6th August**
+
 ![Trello Screenshot 1(Image)](docs/trello/trello 1.png)
+
+**8th August**
+
 ![Trello Screenshot 2(Image)](docs/trello/trello 2.png)
+
+**10th August**
+
 ![Trello Screenshot 3(Image)](docs/trello/trello 3.png)
