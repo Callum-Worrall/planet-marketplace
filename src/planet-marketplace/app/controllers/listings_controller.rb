@@ -20,8 +20,6 @@ class ListingsController < ApplicationController
     buyer_profile.update_attribute(:credits, (buyer_profile.credits.to_i - @listing.price.to_i))
     @seller_profile.update_attribute(:credits, (@seller_profile.credits.to_i + @listing.price.to_i))
     
-    planets.each { |planet| planet.update_attribute(:user_id, current_user.id)}
-
     respond_to do |format|
       if (can_purchase?(@seller_profile, buyer_profile, @listing) &&
         @listing.save &&

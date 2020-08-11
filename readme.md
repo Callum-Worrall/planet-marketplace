@@ -6,11 +6,11 @@
 **Trello**: https://trello.com/b/aZBESBCJ/marketplace-app
 
 ## Purpose
-The Planet Marketplace is fictional application that was created to demonstrate an understanding of how marketplaces are structured, it also intended to be used for entertainment used for amusement as it is about fictional characters trading and selling planets and will eventually have aspects of game mechanics.
+The Planet Marketplace is an application that was created to demonstrate an understanding of how marketplaces are structured, it also intended to be used for entertainment and a 'fictional' application of sorts as it's real intent in its use is for amusement as it is about fictional characters trading and selling planets and will eventually have aspects of game mechanics.
 
 ## Features & Functionality
 #### Current
-Create user profiles, create and trade planets.
+A user can create user profiles, planets and listings. They can sell the planets using listings and buy listings they find posted by other users.
 
 #### Future
  - Planet Resource Generation: Acquire resources via built structures that can be used for a variety of construction purposes or sold in raw bulk.
@@ -59,10 +59,25 @@ Heroku is used to publish the web application to the internet.
 - After lastly setting a price they will publish the listing and wait.
 - After a while another users purchases their listing and they receive the credits they put the listing up for and have the planet removed from their control.
 
+##### Viewing Listings on the Home page
+
+![Home - Listings](docs/screenshots/featured_listings.png)
+
+##### Viewing a Listing
+
+![Listing - Purchasing](docs/screenshots/listing_purchase_option.png)
+
+##### Purchases
+
+![Purchases](docs/screenshots/purchases.png)
+
 ##### A user wants to buy a planet, perhaps so they can sell it later at a mark-up.
+
 - The user searches for the type of planet they want on the listings on the home page.
 - They look at several listings before settling on one they like.
 - They press the purchase button and receive the planet and have the credits it cost deducted from theirs.
+
+
 
 ### Conceptual User Stories for later Updates
 
@@ -192,12 +207,6 @@ In it's current state I have not yet implemented a search function and as such t
 #### Wireframe - View Listings Page
 ![Wireframe - View Listings (Image)](docs/wireframes/listings_view.png)
 
-#### Wireframe - New Listing Page
-<!-- ![Wireframe - New Listing (Image)](docs/wireframes/.png) -->
-
-#### Wireframe - Edit Listing Page
-<!-- ![Wireframe - Edit Listing (Image)](docs/wireframes/.png) -->
-
 #### Wireframe - View Listing Page
 ![Wireframe - View Listing (Image)](docs/wireframes/listing_view.png)
 
@@ -219,3 +228,7 @@ Below are some screenshots of several stages of the project, the documentation a
 **10th August**
 
 ![Trello Screenshot 3(Image)](docs/trello/trello 3.png)
+
+**11th August**
+
+![Trello Screenshot 3(Image)](docs/trello/trello 4.png)
