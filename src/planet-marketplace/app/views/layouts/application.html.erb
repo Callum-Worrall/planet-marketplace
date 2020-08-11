@@ -18,10 +18,10 @@
   </head>
 
   <body class="body-custom">
-    <%= render "partials/navbar", user: @user %>
+    <%= render "navbar/navbar", user: @user %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render "partials/footer", user: @user %>
+    <%= render "footer/footer", user: @user %>
   </body>
 </html>

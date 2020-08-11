@@ -1,117 +1,203 @@
 
 # Planet Marketplace
 
+Website: 
+GitHub: https://github.com/Callum-Worrall/planet-marketplace
+Trello: 
+
+## Purpose
+The Planet Marketplace is fictional application that was created to demonstrate an understanding of how marketplaces are structured.
+
+## Functionality
+Create user profiles, create and trade planets.
+
+Future plans, include:
+ - Planet Resource Generation: Acquire resources via built structures that can be used for a variety of construction purposes or sold in raw bulk.
+ - Army Building: Requisition armies from a planets population or buy a mercenary army.
+ - Planet Claiming: Acquisition through conquering using armies, either 'unclaimed' planets or perhaps even other warlords planets.
+
+## Who is the Planet Marketplace for?
+
+ in particular this is not so much a problem but a fun application used for amusement as it is about fictional characters trading and selling planets and is incredibly unrealistic. It is built in such a way that it can be further developed into a browser-based marketplace game of sorts with ambitions of extra features such as resource collection and structure building.
+
+The fictional problem this solves however is to provide an easy and convenient method for 
+
+
+## Target Audience
+Aspiring and accomplished evil alien warlords who want to buy and sell the planets they have conquered.
+
 ### Explain the different high-level components (abstractions) in your App - explain and show understanding
- - How different parts of the site work in relevant chunks
- - 
- - this could very well be done by the rest of the documentation
- - MVC Model
- - Users, Profiles & Assets
-  - User Messages
- - Listings, Transactions
- - Reviews, Ratings
-- Planets
- - Planet Claiming
- - Planet Resource Acquisition
+### Users and Profiles
 
-## Detail any third party services that your App will use
-##### Amazon S3 of the Amazon Web Services
-- used as an image upload service
+The user-profile combination is used for everything to do with a user and their information, the user section is used solely for authentication and the profile side is used to store extra information and is the side of the users that is most interacted with. The way this works 
 
-##### Devise gem for rails authentication
-- using the devise gem to validate and authenticate all interaction with a profile and listings a user has made
+### Listings and Planets
 
-### Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-- It's a fictional marketplace that demonstrates an understanding of how marketplaces are structured, in particular this is not so much a problem but a fun application used for amusement as it is about fictional characters trading and selling planets and is incredibly unrealistic.
-- It does need solving!
-- Problems associated include:
- - Remaining on task (keeping things simple to begin with), planning thoroughly, updating consistently
- - Adapting concepts as unforeseen problems become apparent (adjust ERD, adjust goals on trello, adjust site map)
+Listings and planets is what the site is all about, planets are what is being sold and bought, and listings are the method of transaction. Listings can technically contain several planets, but at this point only one is possible per listing. Listings are posted by users and then bought by other users for the fictional 'credits' currency that the site uses.
 
+### Partials
 
-##### 
+I've used several partials within the application for easier readability and to lower repetition.
 
+#### Cards and Card Containers
 
-### User Stories - provide user stories for your app, cover most of the needs of the app
+Planets and listings each have their own partials for when they are being viewed in groups, for planets this is they only way they are viewed.
 
-##### US 1 - A User wants to sell a planet (user wants to do 'action' because 'reason')
-- demonstrates how a user can create a new listing
-- click the new listing button
-- fill in listing title and description
-- select from one or more planets that they own what they want to list
-- set a price
-- publish the listings
-- another users purchases the listing
-- selling user receives credits they set in the price minus a selling fee
-- buyer receives planets and seller has planets removed
+#### Buttons and Links
 
-##### US 2 - A User wants to buy a planet
-- user searches for the type of planet they want, by specifying budget and what they're looking for
-- finds a listing
-- buys listing
-- receives planets
-
-##### US 3 - A User wants to review a planet they bought
-- Have an option to leave reviews based on past reviews
-- There is a prompt in a users profile to leave a review
-- They can then see the review rating reflect on the other users rating and see their review on their page
-- The other user then replies to their rating, giving a thumbs up or thumbs down, saying they did not deserve the rating
-
-##### US 4 - User wants to purchase and collect on investment
-- user sets up facilities to acquire resources from their planets over a period of time
-
-##### US 5 - User wants to claim a planet
-- buy an army or requisition an army using credits over a period of time
-- use that army to conquer an 'unclaimed' planet
-- each invasion/purge takes a certain amount of time
-- users claims new planet
-- user then reinforces that same army with the new planets population
-- user then uses that army to conquer another users planet
-- there is a period of time in which the other user can send an army to fend off the attack
-- armies to damage to each other, one wins and the other army is wiped out, there is damage done to the planet too
+There are various buttons and links used throughout the application, they are based on bootstraps buttons, again to reduce repetition and better control across the site. Examples of buttons that have been made into partials are, new, edit and delete buttons for listings and planets.
 
 
 
+## Tech Stack
 
-### Entity Relationship Diagram - Simple/Core Elements
+##### Ruby on Rails
+A model-view-controller framework written in Ruby for web development.
+
+##### PostgreSQL
+An object-relational database used to store the websites data.
+
+##### HTML
+The basic building block of the Web, used to define the structure of the web pages.
+
+##### CSS & SASS
+Used to alter the appearance of the websites html pages.
+
+##### Bootstrap
+Used in conjunction with CSS & SASS to alter the appearance of the website, used predominately for its'navbars', 'buttons' and 'cards'.
+
+##### Amazon Active Storage - S3
+Amazon S3 is an image upload service used to upload images to the marketplace.
+
+##### Devise Gem for rails authentication
+The Devise gem is used to validate and authenticate all interaction with a users account and profile.
+
+##### Heroku
+Heroku is used to publish the web application to the internet.
+
+
+## User Stories
+
+##### A user wants to sell a planet they have so they can earn some more credits.
+
+- A logged in user clicks the new listing button.
+- They then fill in the listing title and select they planet they want to sell, they may also add a description.
+- After lastly setting a price they will publish the listing and wait.
+- After a while another users purchases their listing and they receive the credits they put the listing up for and have the planet removed from their control.
+
+##### A user wants to buy a planet, perhaps so they can sell it later at a mark-up.
+- The user searches for the type of planet they want on the listings on the home page.
+- They look at several listings before settling on one they like.
+- They press the purchase button and receive the planet and have the credits it cost deducted from theirs.
+
+### Conceptual User Stories for later Updates
+
+##### A user wants to review of a planet they bought after purchasing as they disliked the planet and they feel like the listing lied.
+
+- A user is angry and as they have an option to leave reviews based on past purchases they decide to do so.
+- In the review they leave a low rating and a comment describing their bad experience.
+- The other user then replies to their rating, giving a thumbs thumbs down, saying they did not deserve the rating as they bought what was advertised.
+- The user who left the review doesn't care as they have now left a bad mark against the seller of the listing.
+
+##### A user wants to purchase and collect on investment after buying a planet.
+- A user builds a facility on one of their planets to acquire resources from that planet over a period of time.
+
+##### A user wants to claim a planet so they can sell it or use it for resources.
+- A user buys an army or requisitions one from a planets population.
+
+- They then use that army to conquer an 'unclaimed' planet.
+
+- The invasion takes a while and their army is damaged, but eventually they  claim the planet.
+
+  
+
+## Entity Relationship Diagram - Current / Core Models
 I created a more complex ERD (which I've included below this one) as I was coming up with the idea for the application, however as time proceeded I realised I needed to simplify my goals for the purpose of time management and the assessment so this 'simple' ERD resembles the project as it currently stands.
-![Planet Marketplace - Simple Entity Relationship Diagram](docs/ERD_simple.jpg)
+![Planet Marketplace - Simple Entity Relationship Diagram](docs/erd_current.png)
 
-### Core Database Relations
+#### Core Database Relations
 Discuss the database relations to be implemented.
 Describe your project’s model in terms of the relationships (active record associations) they have with each other.
 
-##### Users to Profiles
-- Each user has a profile that is belongs to it by a foreign key in profile.
-- a profile record cannot exist without a user record
+##### Profiles to Users
 
-##### Users to Users
-- users interact with each other via messages and reviews
+**Profiles** contain a belongs to, one-to-one foreign key to the **users** table.
 
 ##### Listings to Users
-- users buy and sell to other users listings
+**Listings** contain a belongs to, many-to-one foreign key to the **users** table.
 
-##### Planets to Listings
-- listings contain planets
+**Listings to Planets**
 
+**Listings** contain a one-to-many foreign key to the **planets** table, which indicates what **planets** are included in the listing.
 
+##### Planets to Users
 
-### Entity Relationship Diagram - Advanced/Stretch Elements
-Where I would like the project to go given a larger timeframe. e.g. stretch goals
-![Planet Marketplace - Preferred Entity Relationship Diagram](docs/ERD_advanced.jpg)
+**Planets** contain a many to one foreign key to the **users** table, which indicate who owns them.
 
-##### Listings to Carts
+## Entity Relationship Diagram - Original / Advanced Models (Outdated)
+Where I would like the project to go given a larger timeframe, this ERD needs an update to indicate the new user and profile relationship.
 
-- listings can be found in multiple users carts at any one time
-- listings are deleted from another users cart if it reaches checkout
+![Planet Marketplace - Preferred Entity Relationship Diagram](docs/erd_original.png)
 
-##### Listings to Reviews
+#### Extra Database Relations
 
+To be defined.
 
-##### Reviews to Users
+## Site Map - Current / Core
 
+This is a map of the site as it currently stands.
 
+![Planet Marketplace - Preferred Entity Relationship Diagram](docs/site_map_current.png)
 
-### Site Map
+##  Site Map - Original / Advanced (Outdated)
 
-![Planet Marketplace - Preferred Entity Relationship Diagram](docs/ERD_advanced.jpg)
+This was the original site map that was planned alongside the original Entity Relation Diagram.
+
+![Site Map - Original / Advanced (Image)](docs/wireframes/.png)
+
+## Wireframes
+Despite my attempts I still have not managed to alter the websites appearance to the original design of the wireframes, especially as some content like the reviews system have not made it into the project as of yet.
+
+#### Wireframe - Navbar Logged In
+![Wireframe - Navbar Logged In (Image)](docs/wireframes/logged_in.png)
+
+#### Wireframe - Navbar Logged Out
+![Wireframe - Navbar Logged Out (Image)](docs/wireframes/logged_out.png)
+
+#### Wireframe - Login Page
+![Wireframe - Navbar Logged Out (Image)](docs/wireframes/sign_in.png)
+
+#### Wireframe - Sign Up Page
+![Wireframe - Navbar Logged Out (Image)](docs/wireframes/sign_up.png)
+
+#### Wireframe - View Profile Page
+![Wireframe - Navbar Logged Out (Image)](docs/wireframes/profile_view.png)
+
+#### Wireframe - Edit Profile Page
+![Wireframe - Navbar Logged Out (Image)](docs/wireframes/profile_edit.png)
+
+#### Wireframe - Home Page
+![Wireframe - Home (Image)](docs/wireframes/home.png)
+In it's current state I have not yet implemented a search function and as such the home page more closely resembles the view listings wireframe below.
+
+#### Wireframe - View Listings Page
+![Wireframe - View Listings (Image)](docs/wireframes/listings_view.png)
+
+#### Wireframe - New Listing Page
+<!-- ![Wireframe - New Listing (Image)](docs/wireframes/.png) -->
+
+#### Wireframe - Edit Listing Page
+<!-- ![Wireframe - Edit Listing (Image)](docs/wireframes/.png) -->
+
+#### Wireframe - View Listing Page
+![Wireframe - View Listing (Image)](docs/wireframes/listing_view.png)
+
+## Task Allocation and Tracking - Trello
+
+Trello was used throughout the course of project and it was seperated into 5 phases up to this point, eventually phases were archived to declutter and easier keep track of progress.
+Each card in the original phases had due dates, some of these were adapted as certain tasks took longer than expected.
+
+Below are some screenshots of several stages of the project.
+![Trello Screenshot 1(Image)](docs/trello/trello 1.png)
+![Trello Screenshot 2(Image)](docs/trello/trello 2.png)
+![Trello Screenshot 3(Image)](docs/trello/trello 3.png)

@@ -14,4 +14,30 @@ a:visited { text-decoration: none !important; }
 a:hover { text-decoration: none !important; }
 a:active  { text-decoration: none !important; }
 
+.btn { font-weight: bold; margin: 10px !important; }
+
+.page-center { align-content: center !important;  }
+
+.profile {
+  // column-count: 2;  
+  display: flex;
+  // align-content: left !important;
+  justify-content: center;
+}
+
+.profile-left  {
+  display:flex;
+  align-items: flex-start;
+  text-align: center;
+}
+.profile-right {
+  display:flex;
+  align-items: flex-end;
+  text-align: left;
+}
+
+.profile-view-body {
+  text-align: center;
+}
+
 html { font-family: 'Rubik', sans-serif; font-size: 18px; }

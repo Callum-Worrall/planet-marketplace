@@ -1,0 +1,24 @@
+<%if(user_signed_in? && Profile.find_by(user_id: current_user) != nil)%>
+  <%# Logged in %>
+
+  <%if(@has_credits)%>
+    Credits: <%= Profile.find_by(user_id: current_user).credits.to_i %>
+  <%else%>
+    Credits: 0
+  <%end%>
+
+  <%= link_to Profile.find_by(user_id: current_user).username, view_profile_path(current_user), class: "btn", id: "btn-profile" %>
+  <%= link_to "Logout", destroy_user_session_path, method:"DELETE" %>
+
+  <%else%>
+  <%# Not Logged in %>
+
+  <%if(user_signed_in?) %>
+    <%= link_to "Login", new_profile_path %>
+  <%else%>
+    <%= link_to "Login", new_user_session_path %>
+  <%end%>
+
+  <%= link_to "Sign Up", new_user_registration_path %>
+
+<%end%>
